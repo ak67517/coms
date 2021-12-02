@@ -1,0 +1,40 @@
+{% extends "reports/report_base.html" %}
+
+{% block prereport %}
+<div class="col-md-4">
+	<div class="content">
+	{% if user.is_authenticated %}
+		<h2>
+			List of Reports	
+		</h2>
+
+    {% endif %}
+			
+	</div>
+	{% if user.is_authenticated %}
+	<a href="{% url 'reports:create' %}" class="btn btn-warning" role="button"><span class="fa fa-plus"></span> Create Report</a>
+	{% endif %}
+</div>
+
+<div class="col-md-8" style='margin-top:3%;'>
+	<div class="list-report">
+		{% for report in object_list %}
+		<a href="{% url 'reports:single' slug=project.slug %}"
+		class="list-report-item list-report-item-action flex-column align-items-start">
+			<h3 class="mb-1">{{ report.report_id }}</h3>
+			<p class="mb-1">{{ report.message_html|safe }}</p>
+		</a>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}
+
+{% block report_content %}
+<div class="col-md-8">
+    {% for report in report_list %}
+      {% include "reports/_report.html" %}
+    {% endfor %}
+  </div>
+
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "reports/report_base.html" %}
+{% load bootstrap3 %}
+
+
+{% block report_content %}
+<h4>Create a new report</h4>
+<form id='reportForm' action= "{% url 'reports:create' %}" method="post">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  <input type="submit" name="" value="Create" class="btn btn-primary btn-large">
+</form>
+{% endblock %}
