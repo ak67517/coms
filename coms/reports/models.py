@@ -14,9 +14,9 @@ class Report(models.Model):
     report_id = models.CharField(max_length=255,unique=True)
     user = models.ForeignKey(User,related_name='reports',on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now=True)
-    manday = models.CharField(max_length=255)
-    start_date = models.DateField(max_length=255)
-    end_date = models.DateField(max_length=255)
+    manday = models.CharField(max_length=255,null=True)
+    start_date = models.DateField(max_length=255,null=True)
+    end_date = models.DateField(max_length=255,null=True)
     message = models.TextField()
     message_html = models.TextField(editable=False)
     project_id = models.ForeignKey(Project,related_name='reports',null=True,blank=True,on_delete=models.CASCADE)
@@ -33,4 +33,3 @@ class Report(models.Model):
                                               'pk':self.pk})
     class Meta:
         ordering = ['report_id']
-
