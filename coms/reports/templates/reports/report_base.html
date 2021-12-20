@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="reports-page">
+  <div class="container">
+      {% block prereport %} {% endblock %}
+      {% block report_content %} {% endblock %}
+      {% block postreport %} {% endblock %}
+  </div>
+</div>
+
+{% endblock %}

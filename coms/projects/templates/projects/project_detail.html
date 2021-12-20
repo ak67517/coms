@@ -1,0 +1,25 @@
+{% extends "projects/project_base.html" %}
+{% block preproject %}
+
+<h1> Project ID : {{ project.project_id }} </h1>
+<h1> Project Name : {{ project.project_name }} </h1>
+
+{%endblock%}
+
+{% block project_content %}
+
+    <p></p>
+    <p></p>
+    <h1><u>Details</u></h1>
+    <p></p>
+    <h3>Task: {{ project.tasks | safe }} </h3>
+    <h3>Description: {{ project.description }} </h3>
+    <h3>Started at: {{ project.start_date}} </h3>
+    <h3>Day required: {{ project.estimated_required_day }}</h3>
+
+    {% comment %}
+    {% include "projects/_project.html"%}
+    {% endcomment %}
+      
+
+{% endblock %}

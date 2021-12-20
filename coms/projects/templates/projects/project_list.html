@@ -1,0 +1,37 @@
+{% extends "projects/project_base.html" %}
+
+{% block preproject %}
+<div class="col-md-4">
+	<div class="content">
+		{% if user.is_authenticated %}
+		<h2>List of Projects</h2>
+		<h2>
+			Welcome
+			{% comment %}
+			<a href="{% url 'projects:for_user' username=user.username %}">@</a>
+			{% endcomment %}
+			{{user.username }}
+		</h2>
+
+    {% endif %}
+
+	</div>
+	{% if user.is_authenticated %}
+	<a href="{% url 'projects:create' %}" class="btn btn-warning" role="button"><span class="fa fa-plus"></span> Create New Project</a>
+	{% endif %}
+</div>
+{% endblock %}
+ 
+{% block project_content %}
+<div class="col-md-8" style='margin-top:3%;'>
+	<div class="list-project">
+		{% for project in object_list %}
+		<a href="{% url 'projects:single' slug=project.slug %}"
+		class="list-project-item list-project-item-action flex-column align-items-start">
+			<h3 class="mb-1">{{ project.project_id }}</h3>
+			<p class="mb-1">{{ project.project_name }}</p>
+		</a>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

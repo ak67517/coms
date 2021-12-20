@@ -1,0 +1,14 @@
+<div class="media">
+
+	<div class="media-body">
+		{% comment %}
+		<h3 class="mr-5"><a href="{% url 'reports:for_user' username=report.user.username %}">@{{ report.user.username }}</a></h3>
+		{% endcomment %}
+		<h4>{{ report.report_id }}</h4>
+		<h5>{{ report.message_html|safe }}
+			<time class="time"><a href="{% url 'reports:single' username=report.user.username pk=report.pk %}">{{ report.created_at }}</a></time>
+		</h5>
+
+		
+	</div>
+</div>
